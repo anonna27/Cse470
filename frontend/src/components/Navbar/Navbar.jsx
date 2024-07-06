@@ -1,28 +1,35 @@
-// Navbar.jsx
 import React, { useState } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-import SignInForm from '../SignInForm/SignInForm';
+import SignUpForm from '../SignUpForm/SignUpForm';
 import Login from '../Login/Login';
 
-const Navbar = () => {
+
+const Navbar = ({ setShowLogin }) => {
   const [showSignIn, setShowSignIn] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLoginState] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState("Menu");
 
   const handleSignInClick = () => {
     setShowSignIn(true);
-    setShowLogin(false); // Ensure only one pop-up is open at a time
+    setShowLoginState(false);
   };
 
   const handleLoginClick = () => {
     setShowLogin(true);
-    setShowSignIn(false); // Ensure only one pop-up is open at a time
+    setShowLoginState(true);
+    setShowSignIn(false);
   };
 
   const handleClosePopups = () => {
     setShowSignIn(false);
     setShowLogin(false);
+    setShowLoginState(false);
+  };
+
+  const handleSignupClick = () => {
+    setShowSignIn(true);
+    setShowLoginState(false);
   };
 
   return (
@@ -36,14 +43,18 @@ const Navbar = () => {
         <div className="sliding-line" style={{ left: activeMenuItem === "Home" ? "0%" : activeMenuItem === "Menu" ? "33.33%" : "66.66%" }}></div>
       </ul>
       <div className="dot">
-        <button onClick={handleSignInClick}>SIGN IN</button>
+        <button onClick={handleSignInClick}>SIGN UP</button>
         <button onClick={handleLoginClick}>LOG IN</button>
       </div>
 
-      {showSignIn && <SignInForm onClose={handleClosePopups} />}
-      {showLogin && <Login onClose={handleClosePopups} />}
+      {showSignIn && <SignUpForm onClose={handleClosePopups} onLoginClick={handleLoginClick} />}
+      {showLogin && <Login onClose={handleClosePopups} onSignupClick={handleSignupClick} />}
     </div>
   );
 };
 
 export default Navbar;
+
+
+
+
