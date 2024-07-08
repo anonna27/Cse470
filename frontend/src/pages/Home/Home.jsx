@@ -1,3 +1,4 @@
+
 import React, {useContext} from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 // import { AuthContext } from '../context/AuthContext,jsx';
@@ -45,6 +46,14 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
       <h1>     </h1>
       <h1>     </h1>
       <h1>     </h1>
+
+import React from 'react';
+import './Home.css';
+
+const Home = () => {
+  return (
+    <div className="home-container">
+
       <h1>Welcome to the Homepage</h1>
       <p>This is a sample home page.</p>
       <button className="btn">Explore More</button>
@@ -53,3 +62,24 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
 };
 
 export default Home;
+
+
+
+// import React from 'react';
+// import { Redirect } from 'react-router-dom';
+// import './Home.css';
+
+// const Home = ({ isLoggedIn }) => {
+//   if (!isLoggedIn) {
+//     return <Redirect to="/login" />;
+//   }
+
+//   return (
+//     <div className="home-container">
+//       <h1>Welcome to the Homepage</h1>
+//     </div>
+//   );
+// };
+
+// export default Home;
+
