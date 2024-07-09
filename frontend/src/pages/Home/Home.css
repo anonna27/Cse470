@@ -9,6 +9,7 @@
   font-family: 'Arial', sans-serif;
   text-align: center;
   position: relative;
+  padding: 20px; 
 }
 
 .home-container h1 {
@@ -37,9 +38,9 @@
 }
 
 .top-right {
- position: absolute;
-  top: 40px;
-  right: 10px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 } 
 
 .logout-button {
@@ -58,60 +59,28 @@
 }
 
 .top-left {
-  position: absolute;
+  position: absolute; 
+  background-color: #be4444;
   top: 0px;
   left: 0px;
+  display: flex;
+  align-items: center;
  } 
 
 .profile-picture-container {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  align-items: center;
 }
 
 .profile-picture {
-  width: 5px;
-  height: 5px;
-  /* border-radius: 30%; */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   cursor: pointer;
 }
+.profile-picture-container h5 {
+  margin-left: 10px;
+  color: white;
+}
 
-/* Home.css */
-
-.home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    /* background-color: #be4444; */
-    color: white;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-  }
-  
-  .home-container h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  .home-container p {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-  }
-  
-  .home-container .btn {
-    background-color: white;
-    color: #be4444;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .home-container .btn:hover {
-    background-color: #f5c6c6;
-  }
-
+/* -------------------------------------------------

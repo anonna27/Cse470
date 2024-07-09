@@ -102,8 +102,8 @@ const Login = ({ onClose, onSignupClick, setIsLoggedIn }) => {
         localStorage.setItem('token', response.data.token);
         setSuccess('Login successful!');
         setError('');
-        setIsLoggedIn(true); // Set the logged-in state
-        history.push('/home'); // Redirect to home page immediately
+        setIsLoggedIn(true); 
+        history.push('/home'); 
       } else {
         setError(response.data.error || 'Login failed. Please try again.');
         setSuccess('');
@@ -144,3 +144,4 @@ const Login = ({ onClose, onSignupClick, setIsLoggedIn }) => {
 };
 
 export default Login;
+
