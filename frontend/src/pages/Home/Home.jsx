@@ -86,19 +86,30 @@
 
 
 
+//--------------------------------------------------------
 
+// 
 
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import './Home.css';
 import { assets } from '../../assets/assets';
 
-const Home = ({ isLoggedIn, setIsLoggedIn }) => {
+const Home = ({ isLoggedIn, setIsLoggedIn, name }) => {
   const history = useHistory();
+  const [showGreeting, setShowGreeting] = useState(false);
+
+  useEffect(() => {
+    const greetingShown = localStorage.getItem('greetingShown');
+    if (!greetingShown) {
+      setShowGreeting(true);
+      localStorage.setItem('greetingShown', 'true');
+      }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('greetingShown');
     setIsLoggedIn(false);
   };
 
@@ -119,12 +130,11 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
         <div className="profile-picture-container">
           <img
             src={assets.defaultpfp}
-            alt=""
+            alt="Profile"
             className="profile-picture"
             onClick={handleProfileClick}
-            style={{ width: '70px', height: '70px' }}
           />
-          <h5>Hello, username!</h5>
+          {showGreeting && <h5>Hello, {name}!</h5>}
         </div>
       </div>
       <div className="welcome-section">
@@ -137,3 +147,4 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
 };
 
 export default Home;
+

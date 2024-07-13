@@ -85,7 +85,7 @@ import { useHistory } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 
-const Login = ({ onClose, onSignupClick, setIsLoggedIn }) => {
+const Login = ({ onClose, onSignupClick, setIsLoggedIn,setName }) => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -103,6 +103,7 @@ const Login = ({ onClose, onSignupClick, setIsLoggedIn }) => {
         setSuccess('Login successful!');
         setError('');
         setIsLoggedIn(true); 
+        setName(response.data.user.name);
         history.push('/home'); 
       } else {
         setError(response.data.error || 'Login failed. Please try again.');
@@ -132,12 +133,7 @@ const Login = ({ onClose, onSignupClick, setIsLoggedIn }) => {
       </form>
       <p style={{ marginTop: '10px', textAlign: 'center' }}>
         Don't have an account?{' '}
-        <span
-          onClick={onSignupClick}
-          style={{ color: '#007bff', textDecoration: 'underline', cursor: 'pointer' }}
-        >
-          Signup
-        </span>
+        <span onClick={onSignupClick} style={{ color: '#007bff', textDecoration: 'underline', cursor: 'pointer' }} > Signup </span>
       </p>
     </div>
   );

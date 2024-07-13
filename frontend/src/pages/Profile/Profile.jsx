@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Profile.css';
 import { assets } from '../../assets/assets';
 
-const Profile = () => {
+
+const Profile = ({ name }) => {
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
 
@@ -13,10 +14,14 @@ const Profile = () => {
       setImageFileUrl(URL.createObjectURL(file));
     }
   };
-  console.log(imageFile, imageFileUrl)
+
   return (
     <div className="profile-container">
-      <div className="top-left">
+      <div className="background-picture">
+        {/* Background picture goes here */}
+        <img src={assets.backgroundImage} alt="Background" className="background-image" />
+      </div>
+      <div className="profile-content">
         <div className="profile-picture-container">
           {imageFileUrl ? (
             <img src={imageFileUrl} alt="Profile" className="profile-picture" />
@@ -35,20 +40,21 @@ const Profile = () => {
             onChange={handleProfilePictureChange}
           />
         </div>
-      </div>
-      <div className="top-right">
+        <div className="username">
+          <h2>✧✧ {name} ✧✧</h2>
+        </div>
         <div className="count-container">
           <div className="count-box">
             <h2>Follower Count</h2>
-            <p>1000</p> {/* Replace with dynamic data */}
+            <p>1000</p> 
           </div>
           <div className="count-box">
             <h2>Following Count</h2>
-            <p>500</p> {/* Replace with dynamic data */}
+            <p>500</p> 
           </div>
           <div className="count-box">
             <h2>Story Count</h2>
-            <p>10</p> {/* Replace with dynamic data */}
+            <p>10</p> 
           </div>
         </div>
       </div>
@@ -57,3 +63,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
